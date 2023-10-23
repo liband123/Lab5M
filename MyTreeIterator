@@ -1,0 +1,19 @@
+import java.util.*;
+
+
+
+
+
+
+public class myTreeIterator<Node> implements ITreeIterator {
+
+	@Override
+	public int[] SeqeuenceArray(BinarySearchTree bst) {
+		List<Integer> result = new ArrayList<>();
+		inOrderTraversal()
+		return null;
+	}
+private void inOrderTraversal (Node current, List<Integer> result) {
+	
+
+	}}
