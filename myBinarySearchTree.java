@@ -1,3 +1,4 @@
+
 public class myBinarySearchTree extends BinarySearchTree{
     protected Node root;
     protected int size;
