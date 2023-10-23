@@ -1,19 +1,18 @@
-import java.util.*;
+import java.util.ArrayList;
 
+public class myTreeIterator implements ITreeIterator {
+    @Override
+    public int[] SequenceArray(BinarySearchTree bst) {
+        ArrayList<Integer> list = new ArrayList<>();
+        inOrder(bst.root, list);
+        return list.stream().mapToInt(i -> i).toArray();
+    }
 
-
-
-
-
-public class myTreeIterator<Node> implements ITreeIterator {
-
-	@Override
-	public int[] SeqeuenceArray(BinarySearchTree bst) {
-		List<Integer> result = new ArrayList<>();
-		inOrderTraversal()
-		return null;
-	}
-private void inOrderTraversal (Node current, List<Integer> result) {
-	
-
-	}}
+    private void inOrder(BinarySearchTree.Node node, ArrayList<Integer> list) {
+        if (node != null) {
+            inOrder(node.left, list);
+            list.add(node.data);
+            inOrder(node.right, list);
+        }
+    }
+}
