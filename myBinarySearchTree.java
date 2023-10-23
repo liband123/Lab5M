@@ -37,7 +37,7 @@ public class myBinarySearchTree extends BinarySearchTree{
                     return true;
                 }    
             }
-            if (data >= localRoot.data) {
+            else if (data > localRoot.data) {
                 if (localRoot.right != null)
                     localRoot = localRoot.right;
                 else {
@@ -45,6 +45,9 @@ public class myBinarySearchTree extends BinarySearchTree{
                     localRoot.right = new Node(data);
                     return true;
                 }
+            }
+            else {
+                return false;
             }
         }
     }
