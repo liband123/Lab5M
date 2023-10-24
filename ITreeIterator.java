@@ -1,6 +1,4 @@
-
-public interface ITreeIterator {
-	public int []
-			SeqeuenceArray (BinarySearchTree bst);
-
+public interface ITreeIterator
+{
+	int[] SequenceArray(final BinarySearchTree bst);
 }
