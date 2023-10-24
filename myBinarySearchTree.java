@@ -1,58 +1,40 @@
-
-public class myBinarySearchTree extends BinarySearchTree{
-    protected Node root;
-    protected int size;
-    protected static class Node { 
-        int data; 
-        Node left; 
-        Node right; 
-        Node(int data) { 
-            this.data = data; 
-            left = null; 
-            right = null;
-            } 
-        } 
+/**
+ * Concrete implementation of the BinarySearchTree.
+ */
+public class myBinarySearchTree extends BinarySearchTree {
     
-    public myBinarySearchTree() {
-        root = null;
-        size = 0;
-    }
-    
-    
+    @Override
     public boolean add(int data) {
         if (root == null) {
-            root = new Node(data);
+            root = new Node(data);  // Set root if tree is empty
             size++;
             return true;
         }
-        
-        Node localRoot = root;
-        for (;;) {
-            if (data < localRoot.data) {
-                if (localRoot.left != null)
-                    localRoot = localRoot.left;
-                else {
-                    size++;
-                    localRoot.left = new Node(data);
-                    return true;
-                }    
-            }
-            else if (data > localRoot.data) {
-                if (localRoot.right != null)
-                    localRoot = localRoot.right;
-                else {
-                    size++;
-                    localRoot.right = new Node(data);
-                    return true;
-                }
-            }
-            else {
-                return false;
-            }
-        }
+        return insert(root, data);  // Insert data recursively
     }
-    
-    public int getSize() {
-        return size;
+
+    /**
+     * Recursive helper method to insert data.
+     * @param current The current node.
+     * @param data The data to be added.
+     * @return True if data was added, false otherwise.
+     */
+    private boolean insert(Node current, int data) {
+        if (data < current.data) {
+            if (current.left == null) {
+                current.left = new Node(data);  // Insert to the left if data is less
+                size++;
+                return true;
+            }
+            return insert(current.left, data);
+        } else if (data > current.data) {
+            if (current.right == null) {
+                current.right = new Node(data);  // Insert to the right if data is greater
+                size++;
+                return true;
+            }
+            return insert(current.right, data);
+        }
+        return false; // Duplicate data, so not added
     }
 }
