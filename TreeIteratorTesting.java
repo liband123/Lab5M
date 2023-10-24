@@ -1,43 +1,45 @@
-import java.util.stream.IntStream;
-
 /**
- *
- * @since 23 October 2023
- * @author Julian Edwards
- *
+ * A testing utility class to validate the tree iterator.
  */
-public class TreeIteratorTesting
-{
-    // the values in the binary search tree (at the time of this object's initialization).
-    // this field is public because it makes testing easier (the whole point of this class).
-    public final int[] values;
-    public TreeIteratorTesting(final BinarySearchTree bst, final ITreeIterator treeIter) {
-        // "In the constructor of this class, you will take in a binary search tree, and add some values to it."
+public class TreeIteratorTesting {
+
+    public final int[] values;  // Values of the nodes at the time of this object's initialization
+
+    public TreeIteratorTesting(BinarySearchTree bst, ITreeIterator treeIter) {
+        // Add some values
         bst.add(5);
         bst.add(6);
         bst.add(8);
         bst.add(9);
         bst.add(10);
-        // "Then, you will call the treeIter.SequenceArray(bst) to get the array of integer representing the
-        // values of the nodes."
+
+        // Convert BST to array
         values = treeIter.SequenceArray(bst);
     }
 
     /**
-     * @return the average of the values.
-     * @throws java.util.NoSuchElementException if there are no values present (should never happen).
-     *
-     * @since 23 October 2023
-     * @author Julian Edwards
+     * Compute the average of the values.
+     * @return The average.
      */
-    public double average() { return IntStream.of(values).average().orElseThrow(); }
+    public double average() {
+        int sum = 0;
+        for (int value : values) {
+            sum += value;
+        }
+        return (double) sum / values.length;
+    }
 
     /**
-     * @return the maximum value.
-     * @throws java.util.NoSuchElementException if there are no values present (should never happen).
-     *
-     * @since 23 October 2023
-     * @author Julian Edwards
+     * Find the maximum value.
+     * @return The maximum.
      */
-    public int max() { return IntStream.of(values).max().orElseThrow(); }
+    public int max() {
+        int max = Integer.MIN_VALUE;
+        for (int value : values) {
+            if (value > max) {
+                max = value;
+            }
+        }
+        return max;
+    }
 }
