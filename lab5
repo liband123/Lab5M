@@ -1,0 +1,14 @@
+public class Lab5 {
+    public static void main(String[] args) {
+        // Create objects of myBinarySearchTree and myTreeIterator
+        myBinarySearchTree bst = new myBinarySearchTree();
+        myTreeIterator iterator = new myTreeIterator();
+
+        // Create TreeIteratorTesting object and pass the BST and iterator to its constructor
+        TreeIteratorTesting testing = new TreeIteratorTesting(bst, iterator);
+
+        // Print the average and max values
+        System.out.println("Average of BST values: " + testing.average());
+        System.out.println("Max value in BST: " + testing.max());
+    }
+}
